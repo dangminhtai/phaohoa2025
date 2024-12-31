@@ -8,7 +8,11 @@
     <link rel="icon" href="ico.ico" type="image/x-icon">
 </head>
 
-
+<audio id="audio" autoplay loop muted>
+    <source src="firework1.mp3" type="audio/mp3">
+    <source src="firework2.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
 <!-- CSS -->
 <style>
     body {
@@ -326,7 +330,7 @@
             ctx.beginPath();
             ctx.fillStyle = 'white';
             ctx.font = "14px arial";
-            ctx.fillText("Bạn có thể thay đổi kiểu Pháo hoa bằng cách nhấp chuột phải và bắn bằng nhấp chuột trái.", 2, clientHeight - 2);
+            ctx.fillText("Nhấp chuột/chạm vào màn hình để hiển thị âm thanh", 2, clientHeight - 2);
         }
 
         // Mouse coordinates to fire
@@ -391,6 +395,14 @@
         }
 
         var main = setInterval(function () { update(frameDelay); }, frameDelay);
+        window.onload = function () {
+            var audio = document.getElementById('audio');
+            audio.muted = false; // Bật tiếng ngay khi trang tải
+        };
+        document.body.addEventListener('click', function () {
+            var audio = document.getElementById('audio');
+            audio.play();
+        });
     </script>
 </body>
 
